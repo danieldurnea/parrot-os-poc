@@ -3,9 +3,15 @@ kind: VM
 metadata:
   name: parrotos-novnc-vm3
 spec:
-  cpus: 2
-  memory: 2GB
-  image:
+  cpus: 16
+  memory: 8GB
+  image:sudo cp parrotos_nginx.conf /etc/nginx/conf.d/
+
+# Test the Nginx configuration
+sudo nginx -t
+
+# If the test is successful, reload Nginx
+sudo systemctl reload nginx
     oci: poridhi/parrotos-novnc:1.0.0
   kernel:
     oci: weaveworks/ignite-kernel:5.10.51
